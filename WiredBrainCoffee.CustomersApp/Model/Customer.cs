@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static WiredBrainCoffee.CustomersApp.Base.Customer;
-using static WiredBrainCoffee.CustomersApp.Model.Customer;
 
 namespace WiredBrainCoffee.CustomersApp.Model
 {
-    partial class Customer : Observable
+    public partial class Customer : Observable
     {
         private string firstName;
         private string lastName;

@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace WiredBrainCoffee.CustomersApp.Base
 {
-    partial class Customer
+    public partial class Customer
     {
         public class Observable: INotifyPropertyChanged
         {
