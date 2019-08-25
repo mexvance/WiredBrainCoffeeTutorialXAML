@@ -14,6 +14,6 @@
         <TextBox Header="Lastname" Margin="10" 
                  Text="{Binding ElementName=root,Path=Customer.LastName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <CheckBox Content="Is developer" Margin="10"
-                  IsChecked="{Binding ElementName=root,Path=Customer.IsDeveloper,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                  IsChecked ="{Binding ElementName=root,Path=Customer.IsDeveloper,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
     </StackPanel>
 </UserControl>

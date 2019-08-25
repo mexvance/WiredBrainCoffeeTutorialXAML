@@ -68,11 +68,21 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <ListView Grid.Row="1" x:Name="customerListView" 
-                      DisplayMemberPath="FirstName"/>
+            <ListView Grid.Row="1" ItemsSource="{Binding Customers,Mode=OneWay}" 
+                      SelectedItem="{Binding SelectedCustomer,Mode=TwoWay}"
+                      x:Name="customerListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding FirstName,Mode=OneWay}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding LastName,Mode=OneWay}" Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
         <controls:CustomerDetailControl Grid.Row="1" Grid.Column="1"
-                                        Customer="{Binding ElementName=customerListView,Path=SelectedItem,Mode=OneWay}"/>
+                                        Customer="{Binding SelectedCustomer,Mode=OneWay}"/>
 
     </Grid>
 </Page>
