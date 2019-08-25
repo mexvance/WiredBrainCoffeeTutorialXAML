@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml;
+﻿using System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Markup;
 using WiredBrainCoffee.CustomersApp.Model;
@@ -17,34 +18,16 @@ namespace WiredBrainCoffee.CustomersApp.Controls
             this.InitializeComponent();
         }
 
+
+
         public Customer Customer
         {
-            get { return _customer; }
-            set { _customer = value;
-                txtFirstName.Text = _customer?.FirstName ?? "";
-                txtLastName.Text = _customer?.LastName ?? "";
-                chkIsDeveloper.IsChecked = _customer?.IsDeveloper;
-            }
+            get { return (Customer)GetValue(CustomerProperty); }
+            set { SetValue(CustomerProperty, value); }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateCustomer();
-        }
-
-        private void CheckBox_IsCheckedChanged(object sender, RoutedEventArgs e)
-        {
-            UpdateCustomer();
-        }
-
-        private void UpdateCustomer()
-        {
-            if (Customer != null)
-            {
-                Customer.FirstName = txtFirstName.Text;
-                Customer.LastName = txtLastName.Text;
-                Customer.IsDeveloper = chkIsDeveloper.IsChecked.GetValueOrDefault();
-            }
-        }
+        // Using a DependencyProperty as the backing store for Customer.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CustomerProperty =
+            DependencyProperty.Register("Customer", typeof(Customer), typeof(CustomerDetailControl), new PropertyMetadata(null));
     }
 }

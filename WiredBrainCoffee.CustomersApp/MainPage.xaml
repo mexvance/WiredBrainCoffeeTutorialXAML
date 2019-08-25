@@ -69,11 +69,10 @@
                 </Button>
             </StackPanel>
             <ListView Grid.Row="1" x:Name="customerListView" 
-                      DisplayMemberPath="FirstName"
-                      SelectionChanged="CustomerListView_SelectionChanged"/>
+                      DisplayMemberPath="FirstName"/>
         </Grid>
         <controls:CustomerDetailControl Grid.Row="1" Grid.Column="1"
-                                        x:Name="customerDetailControl"/>
+                                        Customer="{Binding ElementName=customerListView,Path=SelectedItem,Mode=OneWay}"/>
 
     </Grid>
 </Page>
