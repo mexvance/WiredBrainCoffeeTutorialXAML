@@ -7,13 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400" x:Name="root">
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style x:Key="myTextBoxStyle" TargetType="TextBox">
+            <Style.Setters>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style.Setters>
+        </Style>
+    </UserControl.Resources>
     <StackPanel>
-        <TextBox Header="Firstname" Margin="10" 
-                 Text="{Binding ElementName=root,Path=Customer.FirstName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-        <TextBox Header="Lastname" Margin="10" 
-                 Text="{Binding ElementName=root,Path=Customer.LastName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Header="Firstname" Style="{StaticResource myTextBoxStyle}"
+                 Text="{x:Bind Customer.FirstName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Header="Lastname" Style="{StaticResource myTextBoxStyle}"
+                 Text="{x:Bind Customer.LastName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <CheckBox Content="Is developer" Margin="10"
-                  IsChecked ="{Binding ElementName=root,Path=Customer.IsDeveloper,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                  IsChecked ="{x:Bind Customer.IsDeveloper,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
     </StackPanel>
 </UserControl>

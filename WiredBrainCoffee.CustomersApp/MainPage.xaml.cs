@@ -18,7 +18,6 @@ namespace WiredBrainCoffee.CustomersApp
         {
             this.InitializeComponent();
             ViewModel = new MainViewModel(new CustomerDataProvider());
-            DataContext = ViewModel;
             this.Loaded += MainPage_Loaded;
             App.Current.Suspending += App_Suspending;
             RequestedTheme = App.Current.RequestedTheme == ApplicationTheme.Dark
@@ -35,22 +34,6 @@ namespace WiredBrainCoffee.CustomersApp
         private async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             await ViewModel.LoadAsync();
-        }
-
-        private void ButtonAddCustomer_Click(object sender, RoutedEventArgs e)
-        {
-            var customer = new Customer { FirstName = "New" };
-            customerListView.Items.Add(customer);
-            customerListView.SelectedItem = customer;
-        }
-
-        private void ButtonDeleteCustomer_Click(object sender, RoutedEventArgs e)
-        {
-            var customer = customerListView.SelectedItem as Customer;
-            if (customer != null)
-            {
-                customerListView.Items.Remove(customer);
-            }
         }
 
         private void ButtonMove_Click(object sender, RoutedEventArgs e)
