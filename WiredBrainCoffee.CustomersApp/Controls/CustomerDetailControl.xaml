@@ -8,14 +8,6 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    <UserControl.Resources>
-        <Style x:Key="myTextBoxStyle" TargetType="TextBox">
-            <Style.Setters>
-                <Setter Property="Margin" Value="10"/>
-                <Setter Property="CornerRadius" Value="5"/>
-            </Style.Setters>
-        </Style>
-    </UserControl.Resources>
     <StackPanel>
         <TextBox Header="Firstname" Style="{StaticResource myTextBoxStyle}"
                  Text="{x:Bind Customer.FirstName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
